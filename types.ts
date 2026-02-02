@@ -26,7 +26,7 @@ export interface Testimonial {
   content: string;
   avatarUrl: string;
   rating: number;
-  relatedId?: string; // Links to Venue.id or Scenario.id
+  relatedId?: string;
 }
 
 export interface User {
@@ -38,10 +38,15 @@ export interface User {
 
 export interface Booking {
   id: string;
-  venueId: string;
-  scenarioId: string;
+  itemId: string; // ID of Venue or Scenario
+  itemName: string;
+  itemType: 'venue' | 'scenario';
   date: string;
   guests: number;
   totalPrice: number;
+  contactName: string;
+  phone: string;
+  email: string;
+  wishes?: string;
   status: 'Pending' | 'Paid' | 'Cancelled';
 }

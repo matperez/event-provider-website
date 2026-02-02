@@ -7,35 +7,85 @@ import Scenarios from './components/Scenarios';
 import EventPlannerAI from './components/EventPlannerAI';
 import Testimonials from './components/Testimonials';
 import DetailsPage from './components/DetailsPage';
+import CartView from './components/CartView';
+import UserProfile from './components/UserProfile';
 import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
-import { Venue, Scenario } from './types';
+import { Venue, Scenario, Booking } from './types';
 
 type ViewState = {
-  type: 'home' | 'venue' | 'scenario';
+  type: 'home' | 'venue' | 'scenario' | 'profile';
   item?: Venue | Scenario;
 };
 
 const App: React.FC = () => {
   const [viewState, setViewState] = useState<ViewState>({ type: 'home' });
+  const [cart, setCart] = useState<Booking[]>([]);
+  const [userBookings, setUserBookings] = useState<Booking[]>([]); // This stores paid history
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Scroll to top when view changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [viewState]);
 
   const handleGoHome = () => setViewState({ type: 'home' });
+  const handleOpenProfile = () => setViewState({ type: 'profile' });
   const handleSelectVenue = (venue: Venue) => setViewState({ type: 'venue', item: venue });
   const handleSelectScenario = (scenario: Scenario) => setViewState({ type: 'scenario', item: scenario });
+  
+  const handleBookingSubmit = (booking: Booking) => {
+    setCart(prev => [...prev, booking]);
+  };
+
+  const removeFromCart = (id: string) => {
+    setCart(prev => prev.filter(b => b.id !== id));
+  };
+
+  const handlePaymentSuccess = () => {
+    // Mark current cart items as paid and move them to userBookings
+    const paidItems: Booking[] = cart.map(item => ({ ...item, status: 'Paid' }));
+    setUserBookings(prev => [...prev, ...paidItems]);
+    setCart([]);
+  };
+
+  // Combine history with pending cart items for the profile view to show everything
+  const allUserRelatedBookings = [...userBookings, ...cart];
+
+  if (viewState.type === 'profile') {
+    return (
+      <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-600">
+        <Header 
+          onGoHome={handleGoHome} 
+          cartCount={cart.length}
+          onOpenCart={() => setIsCartOpen(true)}
+          onOpenProfile={handleOpenProfile}
+        />
+        <UserProfile bookings={allUserRelatedBookings} onBack={handleGoHome} />
+        {isCartOpen && <CartView bookings={cart} onClose={() => setIsCartOpen(false)} onRemove={removeFromCart} onPaymentSuccess={handlePaymentSuccess} />}
+        <footer className="bg-slate-50 pt-20 pb-12 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-xs">
+            © 2024 EventLux Agency. Все права защищены.
+          </div>
+        </footer>
+      </div>
+    );
+  }
 
   if (viewState.type !== 'home' && viewState.item) {
     return (
       <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-600">
-        <Header onGoHome={handleGoHome} />
+        <Header 
+          onGoHome={handleGoHome} 
+          cartCount={cart.length}
+          onOpenCart={() => setIsCartOpen(true)}
+          onOpenProfile={handleOpenProfile}
+        />
         <DetailsPage 
           item={viewState.item} 
           type={viewState.type as 'venue' | 'scenario'} 
           onBack={handleGoHome} 
+          onBookingSubmit={handleBookingSubmit}
         />
+        {isCartOpen && <CartView bookings={cart} onClose={() => setIsCartOpen(false)} onRemove={removeFromCart} onPaymentSuccess={handlePaymentSuccess} />}
         <footer className="bg-slate-50 pt-20 pb-12 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-xs">
             © 2024 EventLux Agency. Все права защищены.
@@ -47,12 +97,16 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-100 selection:text-indigo-600">
-      <Header onGoHome={handleGoHome} />
+      <Header 
+        onGoHome={handleGoHome} 
+        cartCount={cart.length}
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenProfile={handleOpenProfile}
+      />
       
       <main>
         <Hero />
         
-        {/* Statistics or Trust section */}
         <section className="bg-white py-12 border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
@@ -79,7 +133,6 @@ const App: React.FC = () => {
         <EventPlannerAI />
         <Testimonials />
         
-        {/* Newsletter/Contact Section */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-4 bg-indigo-600 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
              <div className="relative z-10">
@@ -96,13 +149,13 @@ const App: React.FC = () => {
                  </button>
                </div>
              </div>
-             
-             {/* Abstract Circles */}
              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-2xl" />
              <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full -ml-24 -mb-24 blur-2xl" />
           </div>
         </section>
       </main>
+
+      {isCartOpen && <CartView bookings={cart} onClose={() => setIsCartOpen(false)} onRemove={removeFromCart} onPaymentSuccess={handlePaymentSuccess} />}
 
       <footer className="bg-slate-50 pt-20 pb-12 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4">

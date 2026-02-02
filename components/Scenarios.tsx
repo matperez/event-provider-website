@@ -26,6 +26,10 @@ const Scenarios: React.FC<ScenariosProps> = ({ onSelect }) => {
     return SCENARIOS.filter((s) => s.category === activeCategory);
   }, [activeCategory]);
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800'; // General celebration fallback
+  };
+
   return (
     <section id="scenarios" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,6 +73,7 @@ const Scenarios: React.FC<ScenariosProps> = ({ onSelect }) => {
                   <img
                     src={scenario.imageUrl}
                     alt={scenario.title}
+                    onError={handleImageError}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">

@@ -3,6 +3,13 @@ import React from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden pt-16 pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -19,13 +26,19 @@ const Hero: React.FC = () => {
             От камерных ужинов до грандиозных корпоративов. Площадки, сценарии и полная организация — всё в одном месте.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#scenarios" className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-2 group">
+            <button 
+              onClick={() => scrollToSection('scenarios')}
+              className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-2 group"
+            >
               Смотреть сценарии
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#planner" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm">
+            </button>
+            <button 
+              onClick={() => scrollToSection('planner')}
+              className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:border-indigo-600 hover:text-indigo-600 transition-all shadow-sm"
+            >
               Спланировать с ИИ
-            </a>
+            </button>
           </div>
         </div>
       </div>

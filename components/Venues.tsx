@@ -9,6 +9,10 @@ interface VenuesProps {
 }
 
 const Venues: React.FC<VenuesProps> = ({ onSelect }) => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800'; // Event fallback
+  };
+
   return (
     <section id="venues" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,6 +32,7 @@ const Venues: React.FC<VenuesProps> = ({ onSelect }) => {
                 <img 
                   src={venue.imageUrl} 
                   alt={venue.name} 
+                  onError={handleImageError}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 flex gap-2">

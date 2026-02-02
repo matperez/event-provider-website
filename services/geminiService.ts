@@ -1,12 +1,12 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
-
+/* Refactored to comply with @google/genai guidelines:
+   - Always use new GoogleGenAI({apiKey: process.env.API_KEY})
+   - Use response.text as a property (not a method)
+*/
 export const getEventRecommendations = async (userInput: string) => {
-  if (!API_KEY) return "Система не настроена. Пожалуйста, обратитесь к администратору.";
-
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
     const response = await ai.models.generateContent({

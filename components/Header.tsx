@@ -4,11 +4,14 @@ import { Calendar, User, ShoppingBag } from 'lucide-react';
 
 interface HeaderProps {
   onGoHome: () => void;
+  cartCount: number;
+  onOpenCart: () => void;
+  onOpenProfile: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onGoHome }) => {
+const Header: React.FC<HeaderProps> = ({ onGoHome, cartCount, onOpenCart, onOpenProfile }) => {
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <button onClick={onGoHome} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -23,13 +26,23 @@ const Header: React.FC<HeaderProps> = ({ onGoHome }) => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <button className="p-2 text-slate-600 hover:text-indigo-600 transition-colors relative">
+            <button 
+              onClick={onOpenCart}
+              className="p-2 text-slate-600 hover:text-indigo-600 transition-colors relative"
+            >
               <ShoppingBag className="w-6 h-6" />
-              <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+              {cartCount > 0 && (
+                <span className="absolute top-1 right-1 bg-indigo-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold animate-in zoom-in">
+                  {cartCount}
+                </span>
+              )}
             </button>
-            <button className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
+            <button 
+              onClick={onOpenProfile}
+              className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+            >
               <User className="w-4 h-4" />
-              <span>Личный кабинет</span>
+              <span className="hidden sm:inline">Личный кабинет</span>
             </button>
           </div>
         </div>

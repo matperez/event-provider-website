@@ -8,7 +8,7 @@ export const VENUES: Venue[] = [
     description: 'Стильное пространство в центре города с кирпичными стенами и панорамными окнами.',
     capacity: 150,
     pricePerDay: 45000,
-    imageUrl: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
     tags: ['Лофт', 'Центр', 'Звук 10кВт']
   },
   {
@@ -17,16 +17,16 @@ export const VENUES: Venue[] = [
     description: 'Элегантный загородный особняк с ухоженным садом для выездных церемоний.',
     capacity: 300,
     pricePerDay: 120000,
-    imageUrl: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
     tags: ['Премиум', 'Сад', 'Особняк']
   },
   {
     id: 'v3',
     name: 'Azure Beach Club',
-    description: 'Открытая площадка на берегу моря с бассейном и лаунж-зоной.',
+    description: 'Открытая площадка на берегу моря с бассеном и лаунж-зоной.',
     capacity: 200,
     pricePerDay: 85000,
-    imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800',
     tags: ['Пляж', 'Лето', 'Вечеринка']
   },
   {
@@ -35,7 +35,7 @@ export const VENUES: Venue[] = [
     description: 'Закрытый клуб с кожаной мебелью и отделкой из темного дерева. Идеально для покера и дегустаций.',
     capacity: 40,
     pricePerDay: 60000,
-    imageUrl: 'https://images.unsplash.com/photo-1560624052-449f5ddf0c31?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1541535650810-10d26f5c2abb?auto=format&fit=crop&q=80&w=800',
     tags: ['VIP', 'Камерно', 'Элитно']
   },
   {
@@ -44,7 +44,7 @@ export const VENUES: Venue[] = [
     description: 'Высокотехнологичный полигон с неоновым освещением. Оборудован для профессионального лазертага и VR-турниров.',
     capacity: 80,
     pricePerDay: 55000,
-    imageUrl: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
     tags: ['Hi-Tech', 'Экшн', 'Неон']
   },
   {
@@ -53,8 +53,44 @@ export const VENUES: Venue[] = [
     description: 'Загородный комплекс с настоящей русской баней на дровах, большой верандой и зоной барбекю.',
     capacity: 30,
     pricePerDay: 40000,
-    imageUrl: 'https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1544161515-4ad6ce6e8340?auto=format&fit=crop&q=80&w=800',
     tags: ['Природа', 'Уют', 'Релакс']
+  },
+  {
+    id: 'v7',
+    name: 'Penthouse Skyline',
+    description: 'Роскошный пентхаус на 60-м этаже с круговой террасой и видом на весь город.',
+    capacity: 50,
+    pricePerDay: 95000,
+    imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
+    tags: ['Вид', 'Премиум', 'Терраса']
+  },
+  {
+    id: 'v8',
+    name: 'Art Gallery Space',
+    description: 'Минималистичное пространство с белыми стенами и профессиональным выставочным светом.',
+    capacity: 100,
+    pricePerDay: 35000,
+    imageUrl: 'https://images.unsplash.com/photo-1531050171669-7df9b2089a61?auto=format&fit=crop&q=80&w=800',
+    tags: ['Арт', 'Свет', 'Минимализм']
+  },
+  {
+    id: 'v9',
+    name: 'Secret Library',
+    description: 'Уникальная локация со стеллажами до потолка, винтажной мебелью и атмосферой старой доброй Англии.',
+    capacity: 25,
+    pricePerDay: 45000,
+    imageUrl: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=800',
+    tags: ['Атмосфера', 'Тихо', 'История']
+  },
+  {
+    id: 'v10',
+    name: 'Modern Canteen',
+    description: 'Светлое и просторное кафе в скандинавском стиле. Идеально для завтраков и семейных бранчей.',
+    capacity: 60,
+    pricePerDay: 25000,
+    imageUrl: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800',
+    tags: ['Уют', 'Бюджетно', 'Светло']
   }
 ];
 
@@ -65,7 +101,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Погружение в мир будущего с неоновым светом, VR-зонами и электронной музыкой.',
     duration: '6 часов',
     pricePerPerson: 3500,
-    imageUrl: 'https://images.unsplash.com/photo-1541873676947-d6a22c2b2f60?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
     category: 'Corporate'
   },
   {
@@ -83,7 +119,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Детский день рождения с аниматорами-астронавтами и квестом по поиску артефактов.',
     duration: '4 часа',
     pricePerPerson: 2500,
-    imageUrl: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&q=80&w=800',
     category: 'Birthday'
   },
   {
@@ -92,7 +128,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Профессиональные столы, дилеры и атмосфера закрытого клуба для истинных ценителей азарта.',
     duration: '5 часов',
     pricePerPerson: 3200,
-    imageUrl: 'https://images.unsplash.com/photo-1511193311914-0346f16bee90?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1541270656001-443b74966953?auto=format&fit=crop&q=80&w=800',
     category: 'Social'
   },
   {
@@ -101,7 +137,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Уникальный формат дегустации: делайте ставки на сорт, регион или крепость напитка в игровой форме.',
     duration: '3 часа',
     pricePerPerson: 4500,
-    imageUrl: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&q=80&w=800',
     category: 'Corporate'
   },
   {
@@ -110,7 +146,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Традиционный отдых в премиальном банном комплексе с услугами парильщика и фермерским мясом на углях.',
     duration: '8 часов',
     pricePerPerson: 5000,
-    imageUrl: 'https://images.unsplash.com/photo-1504113840335-9fa39ef08856?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1515362655824-9a74989f318e?auto=format&fit=crop&q=80&w=800',
     category: 'Social'
   },
   {
@@ -119,7 +155,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Тактические игры на специально оборудованной арене. Драйв, адреналин и командная работа.',
     duration: '3 часа',
     pricePerPerson: 1800,
-    imageUrl: 'https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1552061051-76678601859b?auto=format&fit=crop&q=80&w=800',
     category: 'Birthday'
   },
   {
@@ -128,7 +164,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Последние новинки виртуальной реальности на мощном оборудовании. Соревнования в метавселенной.',
     duration: '4 часа',
     pricePerPerson: 2800,
-    imageUrl: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=800',
+    imageUrl: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&q=80&w=800',
     category: 'Corporate'
   }
 ];
